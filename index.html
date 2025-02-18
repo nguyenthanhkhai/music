@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <title>Music Player</title>
+    <style>
+        .container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            gap: 20px;
+        }
+
+        .music-player {
+            width: 50%;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        .song-list {
+            width: 40%;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            max-height: 60vh;
+            overflow-y: auto;
+        }
+
+        .song-list h3 {
+            margin-bottom: 15px;
+        }
+
+        .song-list ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .song-list li {
+            display: flex;
+            align-items: center;
+            padding: 10px;
+            margin-bottom: 10px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+
+        .song-list li:hover {
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+        .song-list img {
+            width: 50px;
+            height: 50px;
+            border-radius: 5px;
+            margin-right: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="music-player">
+            <div class="album-cover">
+                <img src="" id="rotatingImage" alt="Album Cover" />
+                <span class="point"></span>
+            </div>
+
+            <h2>Song Title</h2>
+            <p>Artist Name</p>
+
+            <audio id="song">
+                <source src="" type="audio/mpeg" />
+            </audio>
+
+            <input type="range" value="0" id="progress" />
+
+            <div class="controls">
+                <button class="backward">
+                    <i class="fa-solid fa-backward"></i>
+                </button>
+                <button class="play-pause-btn">
+                    <i class="fa-solid fa-play" id="controlIcon"></i>
+                </button>
+                <button class="forward">
+                    <i class="fa-solid fa-forward"></i>
+                </button>
+            </div>
+        </div>
+
+        <div class="song-list">
+            <h3>Song List</h3>
+            <ul id="songList"></ul>
+        </div>
+    </div>
+
+    <script src="main.js"></script>
+    <script>
+        const songList = document.getElementById('songList');
+        songs.forEach((song, index) => {
+            const li = document.createElement('li');
+            li.innerHTML = `
+                <img src="${song.cover}" alt="Cover">
+                <span>${song.title} - ${song.name}</span>
+            `;
+            li.addEventListener('click', () => {
+                currentSongIndex = index;
+                updateSongInfo();
+                playPause();
+            });
+            songList.appendChild(li);
+        });
+    </script>
+</body>
+</html>
